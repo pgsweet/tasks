@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, Col, Row, Container } from "react-bootstrap";
 import "./App.css";
 
 function App(): JSX.Element {
@@ -18,6 +19,23 @@ function App(): JSX.Element {
                 <li>second thing</li>
                 <li>third thing</li>
             </ul>
+            <img src="..\github.png" alt="the github logo" />
+            <Button onClick={() => console.log("Hello World!")}>
+                {" "}
+                Log Hello World
+            </Button>
+            <Container>
+                <Row>
+                    <Col>
+                        {" "}
+                        <div className="first-rectangle"></div>
+                    </Col>
+                    <Col>
+                        {" "}
+                        <div className="second-rectangle"></div>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 }
