@@ -32,13 +32,13 @@
 .first-rectangle {
     width: 100px;
     height: 50px;
-    background-color: blue;
+    background-color: red;
 }
 
 .second-rectangle {
     width: 100px;
     height: 50px;
-    background-color: yellow;
+    background-color: red;
 }
 
 @keyframes App-logo-spin {
