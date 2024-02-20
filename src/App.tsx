@@ -19,7 +19,7 @@ function App(): JSX.Element {
                 <li>second thing</li>
                 <li>third thing</li>
             </ul>
-            <img src="..\github.png" alt="the github logo" />
+            <img src="\github.png" alt="the github logo" />
             <Button onClick={() => console.log("Hello World!")}>
                 {" "}
                 Log Hello World
