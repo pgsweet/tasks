@@ -40,7 +40,13 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    const dollarsRemoved = amounts.map((amount: string): string =>
+        amount.at(0) === "$" ? amount.slice(1) : amount
+    );
+
+    return dollarsRemoved.map((str: string): number =>
+        isNaN(Number(str)) ? 0 : Number(str)
+    );
 };
 
 /**
@@ -49,7 +55,12 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    const removedQuestions = messages.filter(
+        (message: string): boolean => message.at(-1) != "?"
+    );
+    return removedQuestions.map((message: string): string =>
+        message.at(-1) === "!" ? message.toUpperCase() : message
+    );
 };
 
 /**
@@ -57,7 +68,8 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    const shortWords = words.filter((word: string): boolean => word.length < 4);
+    return shortWords.length;
 }
 
 /**
@@ -66,7 +78,13 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    if (colors.length === 0) {
+        return true;
+    }
+    return colors.every(
+        (color: string): boolean =>
+            color === "red" || color === "green" || color === "blue"
+    );
 }
 
 /**
