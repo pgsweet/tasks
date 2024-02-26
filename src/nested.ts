@@ -72,14 +72,19 @@ export function getNames(questions: Question[]): string[] {
  * Consumes an array of questions and returns the sum total of all their points added together.
  */
 export function sumPoints(questions: Question[]): number {
-    return 0;
+    return questions.reduce(
+        (total: number, q: Question) => total + q.points,
+        0
+    );
 }
 
 /***
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
-    return 0;
+    return questions
+        .filter((q: Question): boolean => q.published === true)
+        .reduce((total: number, q: Question) => total + q.points, 0);
 }
 
 /***
@@ -100,7 +105,25 @@ id,name,options,points,published
  * Check the unit tests for more examples!
  */
 export function toCSV(questions: Question[]): string {
-    return "";
+    // TODO: THIS
+    const strings = questions.map(
+        (question: Question): string =>
+            question.id +
+            "," +
+            question.name +
+            "," +
+            question.options.length +
+            "," +
+            question.points +
+            "," +
+            question.published
+    );
+    const returnString = strings.reduce(
+        (CSV: string, line: string, index: number) =>
+            index !== strings.length - 1 ? CSV + line + "\n" : CSV + line,
+        "id,name,options,points,published\n"
+    );
+    return returnString;
 }
 
 /**
