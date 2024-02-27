@@ -197,18 +197,25 @@ export function renameQuestionById(
     targetId: number,
     newName: string
 ): Question[] {
+    const generateQuestion = (
+        question: Question,
+        newName: string
+    ): Question => {
+        return {
+            id: question.id,
+            name: newName,
+            body: question.body,
+            type: question.type,
+            options: [...question.options],
+            expected: question.expected,
+            points: question.points,
+            published: question.published
+        };
+    };
+
     return questions.map((question: Question) =>
         question.id === targetId
-            ? {
-                  id: question.id,
-                  name: newName,
-                  body: question.body,
-                  type: question.type,
-                  options: [...question.options],
-                  expected: question.expected,
-                  points: question.points,
-                  published: question.published
-              }
+            ? generateQuestion(question, newName)
             : question
     );
 }
