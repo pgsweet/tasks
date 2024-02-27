@@ -334,6 +334,5 @@ export function duplicateQuestionInArray(
         0,
         duplicateQuestion(newId, newArray[copyQuestionId])
     );
-
     return newArray;
 }
