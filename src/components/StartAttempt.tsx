@@ -11,6 +11,7 @@ export function StartAttempt(): JSX.Element {
 
     return (
         <div>
+            <span>{attempts}</span> attempts left
             <Button
                 onClick={() => (setInProgress(true), setAttempts(attempts - 1))}
                 disabled={inProgress || attempts === 0}
