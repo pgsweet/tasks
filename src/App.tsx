@@ -1,6 +1,12 @@
 import React from "react";
 import { Button, Col, Row, Container } from "react-bootstrap";
 import "./App.css";
+import { ChangeType } from "./components/ChangeType";
+import { RevealAnswer } from "./components/RevealAnswer";
+import { StartAttempt } from "./components/StartAttempt";
+import { TwoDice } from "./components/TwoDice";
+import { CycleHoliday } from "./components/CycleHoliday";
+import { Counter } from "./components/Counter";
 
 function App(): JSX.Element {
     return (
@@ -9,33 +15,18 @@ function App(): JSX.Element {
                 Patrick Sweet UD CISC275 with React Hooks and TypeScript Hello
                 World
             </header>
-            <p>
-                Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload.
-            </p>
-            <h1>This is a h1</h1>
-            <ul>
-                <li>first thing</li>
-                <li>second thing</li>
-                <li>third thing</li>
-            </ul>
-            <img src="\github.png" alt="the github logo" />
-            <Button onClick={() => console.log("Hello World!")}>
-                {" "}
-                Log Hello World
-            </Button>
-            <Container>
-                <Row>
-                    <Col>
-                        {" "}
-                        <div className="first-rectangle"></div>
-                    </Col>
-                    <Col>
-                        {" "}
-                        <div className="second-rectangle"></div>
-                    </Col>
-                </Row>
-            </Container>
+            <hr></hr>
+            <Counter></Counter>
+            <hr />
+            <RevealAnswer></RevealAnswer>
+            <hr />
+            <StartAttempt></StartAttempt>
+            <hr />
+            <TwoDice></TwoDice>
+            <hr />
+            <ChangeType></ChangeType>
+            <hr />
+            <CycleHoliday></CycleHoliday>
         </div>
     );
 }
