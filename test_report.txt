@@ -14,38 +14,126 @@ Browserslist: caniuse-lite is outdated. Please run:
 PASS src/objects.test.ts
 PASS src/arrays.test.ts
 PASS src/nested.test.ts
-PASS src/functions.test.ts
 PASS src/components/StartAttempt.test.tsx
 PASS src/components/TwoDice.test.tsx
+FAIL src/bad-components/ChooseTeam.test.tsx
+  ● ChooseTeam Component tests › Clicking three team members works
+
+    expect(received).toHaveLength(expected)
+
+    Expected length: 3
+    Received length: 0
+    Received array:  []
+
+      35 |         fifth.click();
+      36 |         const currentTeam = screen.queryAllByRole("listitem");
+    > 37 |         expect(currentTeam).toHaveLength(3);
+         |                             ^
+      38 |         expect(currentTeam[0].textContent).toEqual(third.textContent);
+      39 |         expect(currentTeam[1].textContent).toEqual(second.textContent);
+      40 |         expect(currentTeam[2].textContent).toEqual(fifth.textContent);
+
+      at Object.<anonymous> (src/bad-components/ChooseTeam.test.tsx:37:29)
+
+  ● ChooseTeam Component tests › Clearing the team works
+
+    TypeError: Cannot read properties of undefined (reading 'click')
+
+      45 |         third.click();
+      46 |         second.click();
+    > 47 |         fifth.click();
+         |               ^
+      48 |         let currentTeam = screen.queryAllByRole("listitem");
+      49 |         expect(currentTeam).toHaveLength(3);
+      50 |         expect(currentTeam[0].textContent).toEqual(third.textContent);
+
+      at Object.<anonymous> (src/bad-components/ChooseTeam.test.tsx:47:15)
+
+FAIL src/bad-components/DoubleHalf.test.tsx
+  ● DoubleHalf Component tests › You can double AND halve the number.
+
+    TestingLibraryElementError: Unable to find an element with the text: 40. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div>[39m
+          [36m<h3>[39m
+            [0mDouble Half[0m
+          [36m</h3>[39m
+          [36m<div>[39m
+            [0mThe current value is: [0m
+            [36m<span>[39m
+              [0m20[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mDouble[0m
+          [36m</button>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mHalve[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      39 |         expect(screen.queryByText("10")).not.toBeInTheDocument();
+      40 |         double.click();
+    > 41 |         expect(screen.getByText("40")).toBeInTheDocument();
+         |                       ^
+      42 |         expect(screen.queryByText("20")).not.toBeInTheDocument();
+      43 |         halve.click();
+      44 |         expect(screen.getByText("20")).toBeInTheDocument();
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/bad-components/DoubleHalf.test.tsx:41:23)
+
+PASS src/functions.test.ts
 PASS src/components/ChangeType.test.tsx
 PASS src/components/CycleHoliday.test.tsx
-PASS src/components/RevealAnswer.test.tsx
 PASS src/components/Counter.test.tsx
+PASS src/components/RevealAnswer.test.tsx
+PASS src/bad-components/ColoredBox.test.tsx
+PASS src/bad-components/ShoveBox.test.tsx
 PASS src/App.test.tsx
--------------------|---------|----------|---------|---------|-------------------
-File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
--------------------|---------|----------|---------|---------|-------------------
-All files          |   99.47 |    97.72 |     100 |   99.46 |                   
- src               |   99.32 |    96.55 |     100 |    99.3 |                   
-  App.tsx          |     100 |      100 |     100 |     100 |                   
-  arrays.ts        |     100 |      100 |     100 |     100 |                   
-  functions.ts     |     100 |      100 |     100 |     100 |                   
-  nested.ts        |    98.5 |    94.73 |     100 |   98.46 | 251               
-  objects.ts       |     100 |     87.5 |     100 |     100 | 48                
- src/components    |     100 |      100 |     100 |     100 |                   
-  ChangeType.tsx   |     100 |      100 |     100 |     100 |                   
-  Counter.tsx      |     100 |      100 |     100 |     100 |                   
-  CycleHoliday.tsx |     100 |      100 |     100 |     100 |                   
-  RevealAnswer.tsx |     100 |      100 |     100 |     100 |                   
-  StartAttempt.tsx |     100 |      100 |     100 |     100 |                   
-  TwoDice.tsx      |     100 |      100 |     100 |     100 |                   
- src/interfaces    |       0 |        0 |       0 |       0 |                   
-  answer.ts        |       0 |        0 |       0 |       0 |                   
-  question.ts      |       0 |        0 |       0 |       0 |                   
--------------------|---------|----------|---------|---------|-------------------
+--------------------|---------|----------|---------|---------|-------------------
+File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+--------------------|---------|----------|---------|---------|-------------------
+All files           |   99.54 |    96.66 |     100 |   99.53 |                   
+ src                |   99.32 |    96.55 |     100 |    99.3 |                   
+  App.tsx           |     100 |      100 |     100 |     100 |                   
+  arrays.ts         |     100 |      100 |     100 |     100 |                   
+  functions.ts      |     100 |      100 |     100 |     100 |                   
+  nested.ts         |    98.5 |    94.73 |     100 |   98.46 | 251               
+  objects.ts        |     100 |     87.5 |     100 |     100 | 48                
+ src/bad-components |     100 |       50 |     100 |     100 |                   
+  ChooseTeam.tsx    |     100 |       50 |     100 |     100 | 18                
+  ColoredBox.tsx    |     100 |      100 |     100 |     100 |                   
+  DoubleHalf.tsx    |     100 |      100 |     100 |     100 |                   
+  ShoveBox.tsx      |     100 |      100 |     100 |     100 |                   
+ src/components     |     100 |      100 |     100 |     100 |                   
+  ChangeType.tsx    |     100 |      100 |     100 |     100 |                   
+  Counter.tsx       |     100 |      100 |     100 |     100 |                   
+  CycleHoliday.tsx  |     100 |      100 |     100 |     100 |                   
+  RevealAnswer.tsx  |     100 |      100 |     100 |     100 |                   
+  StartAttempt.tsx  |     100 |      100 |     100 |     100 |                   
+  TwoDice.tsx       |     100 |      100 |     100 |     100 |                   
+ src/interfaces     |       0 |        0 |       0 |       0 |                   
+  answer.ts         |       0 |        0 |       0 |       0 |                   
+  question.ts       |       0 |        0 |       0 |       0 |                   
+--------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 11 passed, 11 total
-Tests:       93 passed, 93 total
+Test Suites: 2 failed, 13 passed, 15 total
+Tests:       3 failed, 107 passed, 110 total
 Snapshots:   0 total
-Time:        5.243 s
+Time:        6.078 s
 Ran all test suites.
