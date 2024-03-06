@@ -17,6 +17,8 @@ export function ChooseTeam(): JSX.Element {
     function chooseMember(newMember: string): void {
         if (!team.includes(newMember)) {
             setTeam([...team, newMember]);
+            const index = allOptions.indexOf(newMember);
+            setAllOptions([...allOptions.splice(index, 1)]);
         }
     }
 
